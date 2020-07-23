@@ -10,11 +10,7 @@ import javax.sound.midi.Soundbank;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-/**
- * @Auther: liaoshiyao
- * @Date: 2019/1/11 17:38
- * @Description: 配置websocket后台客户端
- */
+
 @Slf4j
 public class WebSocketConfig {
 

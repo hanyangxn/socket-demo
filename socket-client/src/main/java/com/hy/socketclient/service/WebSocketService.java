@@ -1,11 +1,7 @@
 package com.hy.socketclient.service;
 
 
-/**
- * @Auther: liaoshiyao
- * @Date: 2019/1/12 10:57
- * @Description: websocket 接口
- */
+
 public interface WebSocketService {
 
     /**

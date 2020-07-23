@@ -5,11 +5,7 @@ import org.java_websocket.client.WebSocketClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-/**
- * @Auther: liaoshiyao
- * @Date: 2019/1/12 10:56
- * @Description: websocket接口实现类
- */
+
 @Component
 public class ScoketClient implements WebSocketService {
 

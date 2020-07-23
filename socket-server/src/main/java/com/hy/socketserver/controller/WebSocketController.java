@@ -31,7 +31,7 @@ import java.util.stream.Collectors;
 @Slf4j
 @Component
 @ServerEndpoint("/websocket/{name}")
-public class WebSocket {
+public class WebSocketController {
 
     /**
      * 与某个客户端的连接对话，需要通过它来给客户端发送消息
@@ -46,12 +46,12 @@ public class WebSocket {
     /**
      * 用于存所有的连接服务的客户端，这个对象存储是安全的
      */
-    private static ConcurrentHashMap<String, WebSocket> webSocketSet = new ConcurrentHashMap<>();
+    private static ConcurrentHashMap<String, WebSocketController> webSocketSet = new ConcurrentHashMap<>();
 
     /**
      * 每个 uniqueId 对应的订阅 uniqueId -> subscription
      */
-    private Map<String, WebSocket> subscriptionMap = new ConcurrentHashMap<>();
+    private Map<String, WebSocketController> subscriptionMap = new ConcurrentHashMap<>();
 
     @OnOpen
     public void OnOpen(Session session, @PathParam(value = "name") String name) {
@@ -118,7 +118,10 @@ public class WebSocket {
      */
     public void AppointSending(String name, String message) {
         try {
-            subscriptionMap.get(this.name + name).session.getBasicRemote().sendText(message);
+            for (int i = 0; i < 10 ; i++) {
+                message = "我是服务端返回的结果"+message+i;
+                subscriptionMap.get(this.name + name).session.getBasicRemote().sendText(message);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
